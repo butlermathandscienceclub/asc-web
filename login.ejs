@@ -1,0 +1,15 @@
+<form name="f" >
+
+<input name="name" >
+<input name="group">
+</form>
+
+<script>
+function go(v){
+let un = document.forms["f"]["name"].value
+let g = document.forms["f"]["group"].value
+window.location.assign(`https://mouseios.kellanb.repl.co/reg1?name=${un}&group=${g}`);
+};
+
+</script>
+<button onclick="go(1);">
