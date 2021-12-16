@@ -1,10 +1,9 @@
-<h1>Register</h1>
-<!-- basicly html-->
-<!--  -->
+<noscript>please enable javascript</noscript> 
 <form name="f" >
 
-<input name="name" >
-<input name="group">
+name:<input type="text" name="name" required >
+<br>
+group(type 1 for sub 30, 2 for over 30):<input name="group" required>
 </form>
 
 <script>
@@ -15,4 +14,4 @@ window.location.assign(`https://mouseios.kellanb.repl.co/reg1?name=${un}&group=$
 };
 
 </script>
-<button onclick="go(1);">
+<button onclick="go(1);" style="height: 50px; width: 100px;" >register</button>
