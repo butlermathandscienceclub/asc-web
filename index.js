@@ -1,6 +1,6 @@
 express = require('express');
-var fs = require('fs');
-
+const fs = require('fs');
+const readline = require('readline');
 app = express();
 app.set('veiw-engine', 'ejs')
 const PORT = 5000
@@ -11,41 +11,42 @@ app.get('/',(req,res)=>{
 	res.end();
 })
 app.get('/reg', (req, res)=>{
-res.render('../login.ejs')});
-
+res.render('../reg.ejs')});
 app.get("/reg1",(req, res)=>{
 	n = req.query.name;
 	g = Number(req.query.group);
 	u.push({name:n,group:g})
 	console.log(u)
-	
-
 fs.appendFile('users.txt', `name=${n} group=${g} \n`, function (err) {
   if (err) throw err; 
   console.log('Saved!');
 });
-res.render("../logedin.ejs");
+res.render("../logedin.ejs" ,{name:n});
 	res.end();
-
 }
 );
-
-
-
-
-app.get('/h', (req, res)=>{
-res.end("")
-
-
+var rank_is_up = false;
+app.get('/rank', (req, res)=>{
+	if(rank_is_up)
+	{
+	res.render("../rank.ejs")
+	res.end("")
+	}
+	else
+	{
+		res.end("<h1>competetions not complete </h1>")
+	}
 });
-
-
-
-
-
-
-
-	
+var comps_are_up = false;
+app.get("/comps", (req,res)=>{
+	if(comps_are_up){
+	 res.render("../getcomp.ejs")
+	 res.end("")
+	}
+	else{
+		res.end("competetions not ready, come back later")
+	}
+});
 app.listen(PORT);
   console.log("go on port "+PORT)
 
