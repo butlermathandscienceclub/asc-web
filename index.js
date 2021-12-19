@@ -39,7 +39,7 @@ app.get('/rank', (req, res)=>{
 	}
 	else
 	{
-		res.end("<h1>competetions not complete </h1>")
+		res.end("<h1>competetions not complete come back later</h1>")
 	}
 });
 app.get("/comps", (req,res)=>{
