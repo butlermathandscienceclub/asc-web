@@ -3,4 +3,4 @@
 
 with testing
 
-dont modify index.js
+### index.js: put code inside of main function
