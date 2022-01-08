@@ -1,19 +1,45 @@
+<style>
+input{
+	width: 190px;
+}
+input:focus{
+background-color: black;
+color: white;
+}
+button:hover{background-color: black;
+color: white;}
+</style>
 <noscript>please enable javascript</noscript> 
 <form name="f" >
 
-name:<input type="text" name="name" required >
+<input type="text" name="name" placeholder="your name" required >
 <br>
-group(type 1 if you average sub 30 seconds, 2 for if you averaging over 30 seconds):<input name="group" required>
+<br>
+
+
+<input name="group" placeholder="your average time in seconds
+" required>
 </form>
 
 <script>
 function go(v){
 let un = document.forms["f"]["name"].value
-let g = document.forms["f"]["group"].value
-window.location.assign(`https://mouseios.kellanb.repl.co/reg1?name=${un}&group=${g}`);
-};
+let gr = document.forms["f"]["group"].value
+var gy;
+try{Number(gr); gy = true}
+catch{gy = false}
+if( !gy|| un.search(/[a-z A-Z]/i) ==-1  ){alert("invalad name or group")}
+else{
 
+var g;
+if(Number(gr)<=30){g = 1;}
+else{g=2}
+
+window.location.assign(`https://asc-fork.kellanb.repl.co/reg1?name=${un}&group=${g}`);
+};
+}
 </script>
 <button onclick="go(1);" style="height: 50px; width: 100px;" >register</button>
-<a href="https://asc.kellanb.repl.co">home</a>
+<br>
+<a href="https://asc-dev.kellanb.repl.co">home</a>
 

@@ -1,7 +1,15 @@
+var comps_are_up = true;
+var rank_is_up = true;
+
+
+
 express = require('express');
+
 const fs = require('fs');
 const readline = require('readline');
 app = express();
+app.disable('x-powered-by');
+
 app.set('veiw-engine', 'ejs')
 const PORT = 5000
 app.use(express.urlencoded({ extended: false }))
@@ -18,14 +26,13 @@ app.get("/reg1",(req, res)=>{
 	u.push({name:n,group:g})
 	console.log(u)
 fs.appendFile('users.txt', `name=${n} group=${g} \n`, function (err) {
-  if (err) throw err; 
+  if (err){ throw err; console.log(err)}
   console.log('Saved!');
 });
 res.render("../logedin.ejs" ,{name:n});
 	res.end();
 }
 );
-var rank_is_up = false;
 app.get('/rank', (req, res)=>{
 	if(rank_is_up)
 	{
@@ -37,7 +44,6 @@ app.get('/rank', (req, res)=>{
 		res.end("<h1>competetions not complete </h1>")
 	}
 });
-var comps_are_up = false;
 app.get("/comps", (req,res)=>{
 	if(comps_are_up){
 	 res.render("../getcomp.ejs")
