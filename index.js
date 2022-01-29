@@ -1,15 +1,11 @@
 var comps_are_up = true;
 var rank_is_up = true;
 
-
-
 express = require('express');
-
 const fs = require('fs');
 const readline = require('readline');
 app = express();
 app.disable('x-powered-by');
-
 app.set('veiw-engine', 'ejs')
 const PORT = 5000
 app.use(express.urlencoded({ extended: false }))
@@ -53,6 +49,21 @@ app.get("/comps", (req,res)=>{
 		res.end("competetions not ready, come back later")
 	}
 });
+app.get('/scramble',(req, res)=>{
+	var move_list = ["F " ,"F' ", "U " , "U' ","R ","R' ", "L " ,"L' ",]
+	function rand_array(items){
+		var ret_array = "";
+		for(var c=0; c<20 ; c++){
+			var item = items[Math.floor(Math.random()*items.length)];
+			ret_array += (item)
+		}
+		return ret_array;
+	}
+
+
+	res.write(` 1. ${rand_array(move_list)} \n 2. ${rand_array(move_list)} \n 3. ${rand_array(move_list)} \n 4. ${rand_array(move_list)} \n 5. ${rand_array(move_list)}`)
+	res.end();
+})
 app.listen(PORT);
-  console.log("go on port "+PORT)
+  console.log("go on http://localhost:"+PORT)
 
